@@ -14,6 +14,7 @@ echo "## Install & Update packages. ##"
 echo "################################"
 
 sudo pacman -Syu --needed - < xfce
+sudo systemctl enable firewalld.service
 
 read -r -p "Do you want to install yay? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
