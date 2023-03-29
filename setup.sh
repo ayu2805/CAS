@@ -28,7 +28,6 @@ echo "#####################"
 echo "## System cleanup. ##"
 echo "#####################"
 
-rm -r Fluent-icon-theme --noconfirm
 sudo pacman -Rns $(pacman -Qtdq) --noconfirm
 yay -Sc --noconfirm
 
