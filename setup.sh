@@ -22,7 +22,6 @@ echo "#########################"
 git clone https://github.com/vinceliuice/Fluent-icon-theme.git
 cd Fluent-icon-theme
 sudo ./install.sh -r
-cd
 
 echo "#####################"
 echo "## System cleanup. ##"
@@ -33,6 +32,7 @@ yay -Sc --noconfirm
 
 echo "################################################"
 echo "Done! You can manually delete this folder later!"
+echo "##############Reboot is recomended!#############"
 echo "################################################"
 
 read -r -p "Do you want to reboot now? [y/N] " response
