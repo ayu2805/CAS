@@ -2,8 +2,8 @@
 Customised Arch Setup
 
 
-This is basic DE and Tools installation script. Necessary packages have been installed you have to mannually change the themes in the settings.
-This script was made with keeping in mind that user have already installed almost pure arch via Endeavour OS.
+This is basic DE and Tools installation script. Necessary packages will be installed but you have to mannually change the themes in the settings.
+This script was created taking into account that the user has already installed almost pure Arch via Endeavor OS.
 
 # Packages Installed:
    * xorg
