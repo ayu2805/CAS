@@ -22,7 +22,7 @@ echo "#########################"
 git clone https://github.com/vinceliuice/Fluent-icon-theme.git
 cd Fluent-icon-theme
 sudo ./install.sh -r
-cd ..
+cd
 
 echo "#####################"
 echo "## System cleanup. ##"
