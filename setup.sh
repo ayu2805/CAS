@@ -9,11 +9,11 @@ if [ "$(id -u)" = 0 ]; then
     exit 1
 fi
 
-echo "#########################"
-echo "## Install packages. ##"
-echo "#########################"
+echo "################################"
+echo "## Install & Update packages. ##"
+echo "################################"
 
-sudo pacman -S --needed - < xfce
+yay -Syu --needed - < xfce
 
 echo "#########################"
 echo "## Install Icon theme. ##"
@@ -32,7 +32,7 @@ yay -Sc --noconfirm
 
 echo "################################################"
 echo "Done! You can manually delete this folder later!"
-echo "##############Reboot is recomended!#############"
+echo "############# Reboot is recomended #############"
 echo "################################################"
 
 read -r -p "Do you want to reboot now? [y/N] " response
