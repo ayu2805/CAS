@@ -13,7 +13,21 @@ echo "################################"
 echo "## Install & Update packages. ##"
 echo "################################"
 
-yay -Syu --needed - < xfce --noconfirm
+sudo pacman -Syu --needed - < xfce
+
+read -r -p "Do you want to install yay? [y/N] " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
+    git clone https://aur.archlinux.org/yay.git
+    cd yay
+    makepkg -si
+    
+    read -r -p "Do you want to install VS Code(from AUR)? [y/N] " response
+    if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
+    yay -S visual-studio-code-bin
+    fi
+fi
+
+
 
 echo "#########################"
 echo "## Install Icon theme. ##"
