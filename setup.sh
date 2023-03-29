@@ -13,7 +13,7 @@ echo "################################"
 echo "## Install & Update packages. ##"
 echo "################################"
 
-yay -Syu --needed - < xfce
+yay -Syu --needed - < xfce --noconfirm
 
 echo "#########################"
 echo "## Install Icon theme. ##"
