@@ -13,9 +13,14 @@ echo "################################"
 echo "## Install & Update packages. ##"
 echo "################################"
 
-sudo pacman -Syu --needed - < xfce
+sudo pacman -Syu --needed - < ttpkg
 sudo systemctl enable firewalld.service
-echo "QT_QPA_PLATFORMTHEME=qt6ct" | sudo tee -a /etc/environment
+echo "QT_QPA_PLATFORMTHEME=qt6ct" | sudo tee /etc/environment
+
+read -r -p "Do you want to install xfce? [y/N] " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
+    sudo pacman -Syu --needed - < xfce
+fi
 
 read -r -p "Do you want to install yay? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
@@ -28,8 +33,6 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     yay -S visual-studio-code-bin
     fi
 fi
-
-
 
 echo "#########################"
 echo "## Install Icon theme. ##"
