@@ -39,13 +39,6 @@ git clone https://github.com/vinceliuice/Fluent-icon-theme.git
 cd Fluent-icon-theme
 sudo ./install.sh -r
 
-echo "#####################"
-echo "## System cleanup. ##"
-echo "#####################"
-
-sudo pacman -Rns $(pacman -Qtdq) --noconfirm
-yay -Sc --noconfirm
-
 echo "################################################"
 echo "Done! You can manually delete this folder later!"
 echo "############# Reboot is recomended #############"
