@@ -1,3 +1,4 @@
+#Tools & Theme Packages
 alacarte
 audacity
 bleachbit
@@ -32,16 +33,4 @@ qt6ct
 shotwell
 vlc
 xdg-user-dirs
-xfce4
 xorg
-mousepad
-thunar-archive-plugin
-thunar-media-tags-plugin
-xfce4-battery-plugin
-xfce4-clipman-plugin
-xfce4-mount-plugin
-xfce4-notifyd
-xfce4-pulseaudio-plugin
-xfce4-screenshooter
-xfce4-taskmanager
-xfce4-wavelan-plugin
