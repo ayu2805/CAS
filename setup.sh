@@ -15,6 +15,7 @@ echo "################################"
 
 sudo pacman -Syu --needed - < xfce
 sudo systemctl enable firewalld.service
+echo "QT_QPA_PLATFORMTHEME=qt6ct" | sudo tee -a /etc/environment
 
 read -r -p "Do you want to install yay? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
