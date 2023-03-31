@@ -11,5 +11,3 @@ This script was created taking into account that the user has already installed 
    * **xfce4**
    * some parts of xfce4-goodies
    * few more necessary tools...(Read the "xfce" file for precise information)
-   
-   You can use the .config folder given in this repository if you want
