@@ -5,6 +5,9 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     git clone https://aur.archlinux.org/yay.git
     cd yay
     makepkg -si
+    cd ..
+    yay -Syu systemd-numlockontty
+    sudo systemctl enable numLockOnTty
 fi
 
 read -r -p "Do you want to install VS Code(from AUR)? [y/N] " response
