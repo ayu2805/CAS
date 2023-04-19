@@ -12,4 +12,4 @@ This script was created taking into account that the user has already installed 
    * yay
    * **xfce4**
    * some parts of xfce4-goodies
-   * few more necessary tools...(Read the "xfce" file for precise information)
+   * few more necessary tools...(Read the "ttpkg" file for precise information)
