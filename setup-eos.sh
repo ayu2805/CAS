@@ -26,8 +26,9 @@ sudo systemctl enable numLockOnTty
 
 read -r -p "Do you want to install cinnamon as well as xfce? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    sudo pacman -Syu - < cinxfce
-    yay -S mint-artwork
+    sudo pacman -Syu --needed - < cinxfce
+    yay -S --needed mint-artwork
+    yay -Rscn inkscape
     sudo sed -i '/^#greeter-session=/s/^#greeter-session=example-gtk-gnome/greeter-session=lightdm-slick-greeter/' /etc/lightdm/lightdm.conf
     sudo systemctl enable lightdm
 fi
@@ -36,7 +37,7 @@ echo "#########################"
 echo "#### Install themes. ####"
 echo "#########################"
 
-yay -Syu kvantum-theme-materia materia-gtk-theme
+yay -S --needed kvantum-theme-materia materia-gtk-theme
 git clone https://github.com/vinceliuice/Fluent-icon-theme.git
 cd Fluent-icon-theme
 sudo ./install.sh -r
