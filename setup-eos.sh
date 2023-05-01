@@ -14,7 +14,12 @@ echo "## Install & Update packages. ##"
 echo "################################"
 
 sudo pacman -Syu --needed - < tpkg
-echo "QT_QPA_PLATFORMTHEME=qt6ct" | sudo tee /etc/environment
+
+line="QT_QPA_PLATFORMTHEME=qt6ct"
+file="/etc/environment"
+if ! sudo grep -qF "$line" "$file"; then
+    echo "$line" | sudo tee -a "$file" > /dev/null
+fi
 
 yay -Syu --needed systemd-numlockontty
 sudo systemctl enable numLockOnTty
