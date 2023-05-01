@@ -46,6 +46,7 @@ yay -S --needed kvantum-theme-materia materia-gtk-theme
 git clone https://github.com/vinceliuice/Fluent-icon-theme.git
 cd Fluent-icon-theme
 sudo ./install.sh -r
+cd ..
 
 echo "################################################"
 echo "Done! You can manually delete this folder later!"
