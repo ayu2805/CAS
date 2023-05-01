@@ -13,7 +13,7 @@ echo "################################"
 echo "## Install & Update packages. ##"
 echo "################################"
 
-sudo pacman -Syu --needed - < ttpkg
+sudo pacman -Syu --needed - < tpkg
 echo "QT_QPA_PLATFORMTHEME=qt6ct" | sudo tee /etc/environment
 
 yay -Syu systemd-numlockontty
