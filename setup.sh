@@ -17,22 +17,30 @@ sudo pacman -Syu --needed - < ttpkg
 sudo systemctl enable firewalld.service
 echo "QT_QPA_PLATFORMTHEME=qt6ct" | sudo tee /etc/environment
 
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+cd ..
+yay -Syu systemd-numlockontty
+sudo systemctl enable numLockOnTty
+
 read -r -p "Do you want to install xfce? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    sudo pacman -Syu --needed - < xfce
+    yay -Syu --needed - < xfce
 fi
 
-read -r -p "Do you want to install yay? [y/N] " response
+read -r -p "Do you want to install cinnamon? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    git clone https://aur.archlinux.org/yay.git
-    cd yay
-    makepkg -si
-    cd ..
+    yay -Syu --needed - < cinnamon
+    cp /etc/X11/xinit/xinitrc ~/.xinitrc
+    echo "exec cinnamon-session" | tee -a ~/.xinitrc
+fi
 
 echo "#########################"
-echo "## Install Icon theme. ##"
+echo "## Install themes. ##"
 echo "#########################"
 
+yay -Syu kvantum-theme-materia materia-gtk-theme
 git clone https://github.com/vinceliuice/Fluent-icon-theme.git
 cd Fluent-icon-theme
 sudo ./install.sh -r
