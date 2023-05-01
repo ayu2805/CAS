@@ -21,14 +21,15 @@ sudo systemctl enable numLockOnTty
 
 read -r -p "Do you want to install xfce? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    yay -S - < xfce
+    sudo pacman -Syu - < xfce
 fi
 
 read -r -p "Do you want to install cinnamon? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    yay -S - < cin
+    sudo pacman -Syu - < cin
+    yay -S mint-artwork mint-backgrounds
     cp /etc/X11/xinit/xinitrc ~/.xinitrc
-    echo "exec cinnamon-session" | tee -a ~/.xinitrc
+    echo "exec cinnamon-session" | tee ~/.xinitrc
 fi
 
 echo "#########################"
