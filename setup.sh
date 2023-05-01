@@ -31,7 +31,7 @@ fi
 
 read -r -p "Do you want to install cinnamon? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    yay -Syu --needed - < cinnamon
+    yay -Syu --needed - < cin
     cp /etc/X11/xinit/xinitrc ~/.xinitrc
     echo "exec cinnamon-session" | tee -a ~/.xinitrc
 fi

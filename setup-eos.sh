@@ -21,12 +21,12 @@ sudo systemctl enable numLockOnTty
 
 read -r -p "Do you want to install xfce? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    yay -Syu --needed - < xfce
+    yay -S - < xfce
 fi
 
 read -r -p "Do you want to install cinnamon? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    yay -Syu --needed - < cinnamon
+    yay -S - < cin
     cp /etc/X11/xinit/xinitrc ~/.xinitrc
     echo "exec cinnamon-session" | tee -a ~/.xinitrc
 fi
