@@ -28,14 +28,6 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     cd yay
     makepkg -si
     cd ..
-    yay -Syu systemd-numlockontty
-    sudo systemctl enable numLockOnTty
-    
-    read -r -p "Do you want to install VS Code(from AUR)? [y/N] " response
-    if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    yay -S visual-studio-code-bin
-    fi
-fi
 
 echo "#########################"
 echo "## Install Icon theme. ##"
