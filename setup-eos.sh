@@ -38,10 +38,13 @@ echo "#### Install themes. ####"
 echo "#########################"
 
 yay -S --needed kvantum-theme-materia materia-gtk-theme
-git clone https://github.com/vinceliuice/Fluent-icon-theme.git
-cd Fluent-icon-theme
-sudo ./install.sh -r
-cd ..
+if [ -d /usr/share/icons/Fluent ]; then
+    echo "Fluent Icon Theme is already installed."; else
+    git clone https://github.com/vinceliuice/Fluent-icon-theme.git
+    cd Fluent-icon-theme
+    sudo ./install.sh -r
+    cd ..
+fi
 
 echo "################################################"
 echo "Done! You can manually delete this folder later!"
