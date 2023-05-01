@@ -19,14 +19,9 @@ echo "QT_QPA_PLATFORMTHEME=qt6ct" | sudo tee /etc/environment
 yay -Syu --needed systemd-numlockontty
 sudo systemctl enable numLockOnTty
 
-read -r -p "Do you want to install xfce? [y/N] " response
+read -r -p "Do you want to install cinnamon as well as xfce? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    sudo pacman -Syu - < xfce
-fi
-
-read -r -p "Do you want to install cinnamon? [y/N] " response
-if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    sudo pacman -Syu - < cin
+    sudo pacman -Syu - < cinxfce
     yay -S mint-artwork
     sudo sed -i '/^#greeter-session=/s/^#greeter-session=example-gtk-gnome/greeter-session=lightdm-slick-greeter/' /etc/lightdm/lightdm.conf
     sudo systemctl enable lightdm
