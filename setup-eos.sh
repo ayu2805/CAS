@@ -16,7 +16,7 @@ echo "################################"
 sudo pacman -Syu --needed - < tpkg
 echo "QT_QPA_PLATFORMTHEME=qt6ct" | sudo tee /etc/environment
 
-yay -Syu systemd-numlockontty
+yay -Syu --needed systemd-numlockontty
 sudo systemctl enable numLockOnTty
 
 read -r -p "Do you want to install xfce? [y/N] " response
@@ -28,8 +28,8 @@ read -r -p "Do you want to install cinnamon? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     sudo pacman -Syu - < cin
     yay -S mint-artwork
-    cp /etc/X11/xinit/xinitrc ~/.xinitrc
-    echo "exec cinnamon-session" | tee ~/.xinitrc
+    sudo sed -i '/^#greeter-session=/s/^#greeter-session=/greeter-session=lightdm-slick-greeter/' /etc/lightdm/lightdm.conf
+    sudo systemctl enable lightdm
 fi
 
 echo "#########################"
