@@ -10,5 +10,5 @@ This script was created taking into account that the user has already installed 
 # Packages Installed:
    * xorg
    * yay(not in setup for Endeavour OS)
-   * **xfce4 or/and Cinnamon**
+   * **xfce4 and Cinnamon**
    * few more necessary tools...(Read the **tpkg** , **xfce** and **cinnamon** file for precise information)
