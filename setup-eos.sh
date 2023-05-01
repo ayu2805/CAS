@@ -33,7 +33,7 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
 fi
 
 echo "#########################"
-echo "## Install themes. ##"
+echo "#### Install themes. ####"
 echo "#########################"
 
 yay -Syu kvantum-theme-materia materia-gtk-theme
