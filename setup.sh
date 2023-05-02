@@ -36,7 +36,6 @@ sudo systemctl enable numLockOnTty
 read -r -p "Do you want to install cinnamon as well as xfce? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     sudo pacman -Syu --needed - < cinxfce
-    sudo sed -i '/^#greeter-session=/s/^#greeter-session=example-gtk-gnome/greeter-session=lightdm-gtk-greeter/' /etc/lightdm/lightdm.conf
     sudo systemctl enable lightdm
 fi
 
