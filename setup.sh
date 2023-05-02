@@ -50,7 +50,7 @@ if [ -d /usr/share/icons/Fluent ]; then
     cd ..
 fi
 if [ "$(pacman -Qs cinnamon)" ]; then
-    cinnamon-settings set org.cinnamon.desktop.interface gtk-theme "Materia-dark-compact" && cinnamon-settings set org.cinnamon.desktop.wm.preferences theme "Materia-dark-compact" && cinnamon-settings set org.cinnamon.desktop.interface icon-theme "Fluent-dark"
+    gsettings set org.cinnamon.desktop.interface gtk-theme "Materia-dark-compact" && gsettings set org.cinnamon.desktop.interface icon-theme "Fluent-dark"
 fi
 if [ "$(pacman -Qs xfce4)" ]; then
     xfconf-query -c xsettings -p /Net/ThemeName -s "Materia-dark-compact" && xfconf-query -c xfwm4 -p /general/theme -s "Materia-dark-compact" && xfconf-query -c xsettings -p /Net/IconThemeName -s "Fluent-dark"
