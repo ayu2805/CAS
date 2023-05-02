@@ -18,6 +18,10 @@ cd yay
 makepkg -si
 cd ..
 
+sudo pacman -Sy --needed reflector
+echo -e "--save /etc/pacman.d/mirrorlist\n--protocol https\n--country India\n--latest 5\n--sort rate" | sudo tee /etc/xdg/reflector/reflector.conf > /dev/null
+#Change location as per your need(from "India" to anywhere else)
+sudo systemctl enable --now reflector
 sudo pacman -Syu --needed - < tpkg
 
 line="QT_QPA_PLATFORMTHEME=qt6ct"
