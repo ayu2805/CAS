@@ -13,6 +13,7 @@ echo "####################################################"
 echo "## Install & Update packages (Cinnamon and XFCE). ##"
 echo "####################################################"
 
+rm -rf yay
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
