@@ -30,12 +30,10 @@ if ! sudo grep -qF "$line" "$file"; then
     echo "$line" | sudo tee -a "$file" > /dev/null
 fi
 
-yay -Syu --needed systemd-numlockontty
-sudo systemctl enable numLockOnTty
-
 read -r -p "Do you want to install cinnamon as well as xfce? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     sudo pacman -Syu --needed - < cinxfce
+    sudo sed -i 's/^#greeter-setup-script=/greeter-setup-script=\/usr\/bin\/numlockx\ on/' /etc/lightdm/lightdm.conf
     sudo systemctl enable lightdm
 fi
 
