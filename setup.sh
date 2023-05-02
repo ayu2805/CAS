@@ -49,6 +49,12 @@ if [ -d /usr/share/icons/Fluent ]; then
     sudo ./install.sh -r
     cd ..
 fi
+if [ "$(pacman -Qs cinnamon)" ]; then
+    cinnamon-settings set org.cinnamon.desktop.interface gtk-theme "Materia-compact-dark" && cinnamon-settings set org.cinnamon.desktop.wm.preferences theme "Materia-compact-dark" && cinnamon-settings set org.cinnamon.desktop.interface icon-theme "Fluent-dark"
+fi
+if [ "$(pacman -Qs xfce4)" ]; then
+    xfconf-query -c xsettings -p /Net/ThemeName -s "Materia-Dark-Compact" && xfconf-query -c xfwm4 -p /general/theme -s "Materia-Dark-Compact" && xfconf-query -c xsettings -p /Net/IconThemeName -s "Fluent-dark"
+fi
 
 echo "################################################"
 echo "Done! You can manually delete this folder later!"
