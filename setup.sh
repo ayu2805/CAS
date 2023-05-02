@@ -56,7 +56,7 @@ if [ "$(pacman -Qs xfce4)" ]; then
     xfconf-query -c xsettings -p /Net/ThemeName -s "Materia-dark-compact" && xfconf-query -c xfwm4 -p /general/theme -s "Materia-dark-compact" && xfconf-query -c xsettings -p /Net/IconThemeName -s "Fluent-dark"
 fi
 if [ "$(pacman -Qs lightdm-gtk-greeter)" ]; then
-    echo -e "[greeter]\ntheme-name = Materia-dark-compact\nicon-theme-name = Fluent-dark\nhide-user-image = true\mindicators = ~clock;~spacer;~session;~a11y;~power" | sudo tee /etc/lightdm/lightdm-gtk-greeter.conf > /dev/null
+    echo -e "[greeter]\ntheme-name = Materia-dark-compact\nicon-theme-name = Fluent-dark\nhide-user-image = true\nindicators = ~clock;~spacer;~session;~a11y;~power" | sudo tee /etc/lightdm/lightdm-gtk-greeter.conf > /dev/null
 fi
 
 echo "################################################"
