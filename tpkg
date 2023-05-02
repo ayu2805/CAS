@@ -17,6 +17,8 @@ gvfs-mtp
 gvfs-nfs
 gvfs-smb
 htop
+lightdm
+lightdm-slick-greeter
 mkvtoolnix-gui
 mtools
 nano
