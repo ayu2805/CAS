@@ -9,9 +9,9 @@ if [ "$(id -u)" = 0 ]; then
     exit 1
 fi
 
-echo "################################"
-echo "## Install & Update packages. ##"
-echo "################################"
+echo "####################################################"
+echo "## Install & Update packages (Cinnamon and XFCE). ##"
+echo "####################################################"
 
 git clone https://aur.archlinux.org/yay.git
 cd yay
@@ -30,12 +30,9 @@ if ! sudo grep -qF "$line" "$file"; then
     echo "$line" | sudo tee -a "$file" > /dev/null
 fi
 
-read -r -p "Do you want to install cinnamon as well as xfce? [y/N] " response
-if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    sudo pacman -Syu --needed - < cinxfce
-    sudo sed -i 's/^#greeter-setup-script=/greeter-setup-script=\/usr\/bin\/numlockx\ on/' /etc/lightdm/lightdm.conf
-    sudo systemctl enable lightdm
-fi
+sudo pacman -Syu --needed - < cinxfce
+sudo sed -i 's/^#greeter-setup-script=/greeter-setup-script=\/usr\/bin\/numlockx\ on/' /etc/lightdm/lightdm.conf
+sudo systemctl enable lightdm
 
 echo "#########################"
 echo "#### Install themes. ####"
@@ -49,15 +46,12 @@ if [ -d /usr/share/icons/Fluent ]; then
     sudo ./install.sh -r
     cd ..
 fi
-if [ "$(pacman -Qs cinnamon)" ]; then
-    gsettings set org.cinnamon.desktop.interface gtk-theme "Materia-dark-compact" && gsettings set org.cinnamon.desktop.interface icon-theme "Fluent-dark"
-fi
-if [ "$(pacman -Qs xfce4)" ]; then
-    xfconf-query -c xsettings -p /Net/ThemeName -s "Materia-dark-compact" && xfconf-query -c xfwm4 -p /general/theme -s "Materia-dark-compact" && xfconf-query -c xsettings -p /Net/IconThemeName -s "Fluent-dark"
-fi
-if [ "$(pacman -Qs lightdm-gtk-greeter)" ]; then
-    echo -e "[greeter]\ntheme-name = Materia-dark-compact\nicon-theme-name = Fluent-dark\nhide-user-image = true\nindicators = ~clock;~spacer;~session;~a11y;~power" | sudo tee /etc/lightdm/lightdm-gtk-greeter.conf > /dev/null
-fi
+
+gsettings set org.cinnamon.desktop.interface gtk-theme "Materia-dark-compact" && gsettings set org.cinnamon.desktop.interface icon-theme "Fluent-dark"
+
+xfconf-query -c xsettings -p /Net/ThemeName -s "Materia-dark-compact" && xfconf-query -c xfwm4 -p /general/theme -s "Materia-dark-compact" && xfconf-query -c xsettings -p /Net/IconThemeName -s "Fluent-dark"
+
+echo -e "[greeter]\ntheme-name = Materia-dark-compact\nicon-theme-name = Fluent-dark\nhide-user-image = true\nindicators = ~clock;~spacer;~session;~a11y;~power" | sudo tee /etc/lightdm/lightdm-gtk-greeter.conf > /dev/null
 
 echo "################################################"
 echo "Done! You can manually delete this folder later!"
