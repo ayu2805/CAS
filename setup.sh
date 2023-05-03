@@ -13,11 +13,16 @@ echo "###########################################"
 echo "## Install & Update packages (Cinnamon). ##"
 echo "###########################################"
 
-rm -rf yay
-git clone https://aur.archlinux.org/yay.git
-cd yay
-makepkg -si
-cd ..
+sudo pacman -Sy --needed --noconfirm pacman-contrib
+if [ "$(pactree -r yay)" ]; then
+    echo "Yay is already installed"
+else
+    git clone https://aur.archlinux.org/yay.git
+    cd yay
+    makepkg -si
+    cd ..
+fi
+
 
 sudo pacman -Sy --needed reflector
 echo -e "--save /etc/pacman.d/mirrorlist\n--protocol https\n--country India\n--latest 5\n--sort rate" | sudo tee /etc/xdg/reflector/reflector.conf > /dev/null
