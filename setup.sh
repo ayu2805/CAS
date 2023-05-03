@@ -9,9 +9,9 @@ if [ "$(id -u)" = 0 ]; then
     exit 1
 fi
 
-echo "####################################################"
-echo "## Install & Update packages (Cinnamon and XFCE). ##"
-echo "####################################################"
+echo "###########################################"
+echo "## Install & Update packages (Cinnamon). ##"
+echo "###########################################"
 
 rm -rf yay
 git clone https://aur.archlinux.org/yay.git
@@ -31,7 +31,7 @@ if ! sudo grep -qF "$line" "$file"; then
     echo "$line" | sudo tee -a "$file" > /dev/null
 fi
 
-sudo pacman -Syu --needed - < cinxfce
+sudo pacman -Syu --needed - < cin
 sudo sed -i 's/^#greeter-setup-script=/greeter-setup-script=\/usr\/bin\/numlockx\ on/' /etc/lightdm/lightdm.conf
 sudo systemctl enable lightdm
 
@@ -49,8 +49,6 @@ if [ -d /usr/share/icons/Fluent ]; then
 fi
 
 gsettings set org.cinnamon.desktop.interface gtk-theme "Materia-dark-compact" && gsettings set org.cinnamon.theme name "Materia-dark-compact" && gsettings set org.cinnamon.desktop.interface icon-theme "Fluent-dark"
-
-xfconf-query -c xsettings -p /Net/ThemeName -s "Materia-dark-compact" && xfconf-query -c xfwm4 -p /general/theme -s "Materia-dark-compact" && xfconf-query -c xsettings -p /Net/IconThemeName -s "Fluent-dark"
 
 echo -e "[greeter]\ntheme-name = Materia-dark-compact\nicon-theme-name = Fluent-dark\nhide-user-image = true\nindicators = ~clock;~spacer;~session;~a11y;~power" | sudo tee /etc/lightdm/lightdm-gtk-greeter.conf > /dev/null
 
