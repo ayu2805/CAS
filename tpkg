@@ -35,6 +35,7 @@ python-pip
 openvpn
 qt5ct
 qt6ct
+telegram-desktop
 vlc
 xdg-user-dirs
 xorg
