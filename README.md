@@ -11,4 +11,4 @@ This script was created taking into account that the user has already installed 
    * xorg
    * yay
    * **Cinnamon**
-   * few more necessary tools...(Read the **tpkg** , **cinnamon** file for precise information)
+   * few more necessary tools...(Read the **tpkg** and **cinnamon** file for precise information)
