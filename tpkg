@@ -12,6 +12,8 @@ gparted
 gthumb
 gvfs
 gvfs-afc
+gvfs-goa
+gvfs-google
 gvfs-gphoto2
 gvfs-mtp
 gvfs-nfs
