@@ -9,37 +9,6 @@ if [ "$(id -u)" = 0 ]; then
     exit 1
 fi
 
-echo "###########################################"
-echo "## Install & Update packages (Cinnamon). ##"
-echo "###########################################"
-
-sudo pacman -Sy --needed --noconfirm pacman-contrib
-if [ "$(pactree -r yay)" ]; then
-    echo "Yay is already installed"
-else
-    git clone https://aur.archlinux.org/yay.git
-    cd yay
-    makepkg -si
-    cd ..
-fi
-
-
-sudo pacman -Sy --needed --noconfirm reflector
-echo -e "--save /etc/pacman.d/mirrorlist\n--protocol https\n--country India\n--latest 5\n--sort rate" | sudo tee /etc/xdg/reflector/reflector.conf > /dev/null
-#Change location as per your need(from "India" to anywhere else)
-sudo systemctl enable --now reflector
-sudo pacman -Syu --needed --noconfirm - < tpkg
-
-line="QT_QPA_PLATFORMTHEME=qt6ct"
-file="/etc/environment"
-if ! sudo grep -qF "$line" "$file"; then
-    echo "$line" | sudo tee -a "$file" > /dev/null
-fi
-
-sudo pacman -Syu --needed --noconfirm - < cin
-sudo sed -i 's/^#greeter-setup-script=/greeter-setup-script=\/usr\/bin\/numlockx\ on/' /etc/lightdm/lightdm.conf
-sudo systemctl enable lightdm
-
 echo "#########################"
 echo "#### Install themes. ####"
 echo "#########################"
@@ -53,9 +22,70 @@ if [ -d /usr/share/icons/Fluent ]; then
     cd ..
 fi
 
-gsettings set org.cinnamon.desktop.interface gtk-theme "Materia-dark-compact" && gsettings set org.cinnamon.theme name "Materia-dark-compact" && gsettings set org.cinnamon.desktop.interface icon-theme "Fluent-dark"
+echo "################################"
+echo "## Install & Update packages. ##"
+echo "################################"
 
-echo -e "[greeter]\ntheme-name = Materia-dark-compact\nicon-theme-name = Fluent-dark\nhide-user-image = true\nindicators = ~clock;~spacer;~session;~a11y;~power" | sudo tee /etc/lightdm/lightdm-gtk-greeter.conf > /dev/null
+sudo pacman -Sy --needed --noconfirm pacman-contrib
+if [ "$(pactree -r yay)" ]; then
+    echo "Yay is already installed"
+else
+    git clone https://aur.archlinux.org/yay.git
+    cd yay
+    makepkg -si
+    cd ..
+fi
+
+sudo pacman -Sy --needed --noconfirm reflector
+echo -e "--save /etc/pacman.d/mirrorlist\n--protocol https\n--country India\n--latest 5\n--sort rate" | sudo tee /etc/xdg/reflector/reflector.conf > /dev/null
+#Change location as per your need(from "India" to anywhere else)
+sudo systemctl enable --now reflector
+sudo pacman -Syu --needed --noconfirm - < tpkg
+
+line="QT_QPA_PLATFORMTHEME=qt6ct"
+file="/etc/environment"
+if ! sudo grep -qF "$line" "$file"; then
+    echo "$line" | sudo tee -a "$file" > /dev/null
+fi
+
+# Function to install Cinnamon desktop environment
+install_cinnamon() {
+    echo "Installing Cinnamon..."
+    sudo pacman -Syu --needed --noconfirm - < cin
+    gsettings set org.cinnamon.desktop.interface gtk-theme "Materia-dark-compact" && gsettings set org.cinnamon.theme name "Materia-dark-compact" && gsettings set org.cinnamon.desktop.interface icon-theme "Fluent-dark"
+    sudo sed -i 's/^#greeter-setup-script=/greeter-setup-script=\/usr\/bin\/numlockx\ on/' /etc/lightdm/lightdm.conf
+    sudo systemctl enable lightdm
+    echo -e "[greeter]\ntheme-name = Materia-dark-compact\nicon-theme-name = Fluent-dark\nhide-user-image = true\nindicators = ~clock;~spacer;~session;~a11y;~power" | sudo tee /etc/lightdm/lightdm-gtk-greeter.conf > /dev/null
+}
+
+# Function to install GNOME desktop environment
+install_gnome() {
+    echo "Installing GNOME..."
+    sudo pacman -Syu --needed --noconfirm - < g
+    echo "GNOME installed successfully!"
+    sudo systemctl enable gdm
+}
+
+# Display menu and prompt for user choice
+echo "Welcome to the Arch Linux Desktop Environment Installer."
+echo "Please select the desktop environment you want to install:"
+echo "1. Cinnamon"
+echo "2. GNOME"
+read -p "Enter your choice (1 or 2): " choice
+
+# Evaluate user's choice and call appropriate function
+case $choice in
+    1)
+        install_cinnamon
+        ;;
+    2)
+        install_gnome
+        ;;
+    *)
+        echo "Invalid choice. Exiting."
+        exit 1
+        ;;
+esac
 
 echo "################################################"
 echo "Done! You can manually delete this folder later!"

@@ -1,7 +1,11 @@
 cinnamon
 metacity
-mousepad
+galculator
 gnome-screenshot
 gnome-system-monitor
+lightdm
+lightdm-gtk-greeter
+lightdm-gtk-greeter-settings
 nemo-fileroller
-xfce4-terminal
+numlockx
+gnome-terminal
