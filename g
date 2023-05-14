@@ -18,6 +18,7 @@ gnome-shell-extensions
 gnome-software
 gnome-system-monitor
 gnome-text-editor
+gnome-tweaks
 gnome-user-share
 grilo-plugins
 gvfs
@@ -30,9 +31,9 @@ gvfs-nfs
 gvfs-smb
 malcontent
 nautilus
+orca
 rygel
 sushi
 tracker3-miners
 xdg-desktop-portal-gnome
 xdg-user-dirs-gtk
-yelp
