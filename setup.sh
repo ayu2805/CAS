@@ -35,20 +35,20 @@ if ! sudo grep -qF "$line" "$file"; then
     echo "$line" | sudo tee -a "$file" > /dev/null
 fi
 
-read -r -p "Do you want to install VS Code(from AUR)? [y/N] " response
+read -r -p "Do you want to install Cinnamon? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     echo "Installing Cinnamon..."
     sudo pacman -Syu --needed --noconfirm - < cin
     gsettings set org.cinnamon.desktop.interface gtk-theme "Materia-dark-compact" && gsettings set org.cinnamon.theme name "Materia-dark-compact" && gsettings set org.cinnamon.desktop.interface icon-theme "Fluent-dark"
 fi
 
-read -r -p "Do you want to install VS Code(from AUR)? [y/N] " response
+read -r -p "Do you want to install XFCE? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
+    echo "Installing XFCE..."
     sudo pacman -Syu --needed --noconfirm - < xfce
     xfconf-query -c xsettings -p /Net/ThemeName -s "Materia-dark-compact"
-    xfconf-query -c xsettings -p /Net/IconThemeName -s "NameOfTheIconTheme"
-
-
+    xfconf-query -c xsettings -p /Net/IconThemeName -s "Fluent-dark"
+    xfconf-query -c xfwm4 -p /general/theme -s "Materia-dark-compact"
 fi
 
 sudo sed -i 's/^#greeter-setup-script=/greeter-setup-script=\/usr\/bin\/numlockx\ on/' /etc/lightdm/lightdm.conf
