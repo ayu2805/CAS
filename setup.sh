@@ -27,7 +27,7 @@ if [ -d /usr/share/icons/Fluent ]; then
     cd ..
 fi
 
-sudo pacman -Syu --needed --noconfirm - < tpkg
+sudo pacman -Syu --needed --noconfirm - < ttpkg
 
 line="QT_QPA_PLATFORMTHEME=qt6ct"
 file="/etc/environment"
