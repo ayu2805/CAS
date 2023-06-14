@@ -1,7 +1,8 @@
 alacarte
 xfce4
-xfce4-goodies
-libqalculate
-lightdm
-lightdm-gtk-greeter
-lightdm-gtk-greeter-settings
+thunar-archive-plugin
+xfce4-clipman-plugin
+xfce4-pulseaudio-plugin
+xfce4-screenshooter
+gnome-system-monitor
+mousepad
