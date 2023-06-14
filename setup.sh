@@ -55,6 +55,11 @@ sudo systemctl enable lightdm
 sudo sed -i 's/^#greeter-setup-script=/greeter-setup-script=\/usr\/bin\/numlockx\ on/' /etc/lightdm/lightdm.conf
 echo -e "[greeter]\ntheme-name = Materia-dark-compact\nicon-theme-name = Fluent-dark\nhide-user-image = true\nindicators = ~clock;~spacer;~session;~a11y;~power" | sudo tee /etc/lightdm/lightdm-gtk-greeter.conf > /dev/null
 
+read -r -p "Do you want to install VS Code(from AUR)? [y/N] " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
+    yay -Syu visual-studio-code-bin
+fi
+
 #sudo pacman -Syu --needed --noconfirm - < g
 #gsettings set org.gnome.desktop.interface icon-theme "Fluent-dark"
 #sudo systemctl enable gdm
