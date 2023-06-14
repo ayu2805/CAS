@@ -18,6 +18,12 @@ gvfs-mtp
 gvfs-nfs
 gvfs-smb
 kvantum
+kvantum-theme-materia
+libqalculate
+lightdm
+lightdm-gtk-greeter
+lightdm-gtk-greeter-settings
+materia-gtk-theme
 mtools
 nano
 neofetch
@@ -27,6 +33,7 @@ noto-fonts
 noto-fonts-cjk
 noto-fonts-emoji
 noto-fonts-extra
+numlockx
 python-pip
 openvpn
 qt5ct
