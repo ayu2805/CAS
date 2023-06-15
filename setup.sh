@@ -9,6 +9,11 @@ if [ "$(id -u)" = 0 ]; then
     exit 1
 fi
 
+sudo pacman -Sy --needed --noconfirm reflector
+echo -e "--save /etc/pacman.d/mirrorlist\n--protocol https\n--country India\n--latest 5\n--sort rate" | sudo tee /etc/xdg/reflector/reflector.conf > /dev/null
+#Change location as per your need(from "India" to anywhere else)
+sudo systemctl enable --now reflector
+
 sudo pacman -Sy --needed --noconfirm pacman-contrib
 if [ "$(pactree -r yay)" ]; then
     echo "Yay is already installed"
