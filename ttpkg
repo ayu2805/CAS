@@ -1,5 +1,7 @@
 android-tools
 bleachbit
+dosfstools
+exfatprogs
 file-roller
 firefox
 firewalld
@@ -8,6 +10,7 @@ fuse3
 gnome-keyring
 gnome-online-accounts
 gparted
+gpart
 gthumb
 gvfs
 gvfs-afc
