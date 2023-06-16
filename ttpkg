@@ -44,5 +44,5 @@ qt5ct
 qt6ct
 telegram-desktop
 vlc
-xdg-user-dirs
+xdg-user-dirs-gtk
 xorg
