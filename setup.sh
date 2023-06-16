@@ -45,7 +45,9 @@ read -r -p "Do you want to install Cinnamon? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     echo "Installing Cinnamon..."
     sudo pacman -S --needed --noconfirm - < cin
-    gsettings set org.cinnamon.desktop.interface gtk-theme "Materia-dark-compact" && gsettings set org.cinnamon.theme name "Materia-dark-compact" && gsettings set org.cinnamon.desktop.interface icon-theme "Fluent-dark"
+    gsettings set org.cinnamon.desktop.interface gtk-theme "Materia-dark-compact"
+    gsettings set org.cinnamon.theme name "Materia-dark-compact"
+    gsettings set org.cinnamon.desktop.interface icon-theme "Fluent-dark"
 fi
 
 read -r -p "Do you want to install XFCE? [y/N] " response
