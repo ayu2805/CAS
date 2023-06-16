@@ -33,7 +33,7 @@ if [ -d /usr/share/icons/Fluent ]; then
     cd ..
 fi
 
-pikaur -Syu
+yay -Syu
 sudo pacman -S --needed --noconfirm - < ttpkg
 
 line="QT_QPA_PLATFORMTHEME=qt6ct"
