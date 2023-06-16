@@ -46,5 +46,6 @@ qt6ct
 telegram-desktop
 vlc
 xdg-user-dirs-gtk
+xdg-desktop-portal-gtk
 xed
 xorg
