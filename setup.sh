@@ -9,18 +9,18 @@ if [ "$(id -u)" = 0 ]; then
     exit 1
 fi
 
-sudo pacman -Sy --needed --noconfirm reflector
+sudo pacman -Syu --needed --noconfirm reflector
 echo -e "--save /etc/pacman.d/mirrorlist\n--protocol https\n--country India\n--latest 5\n--sort rate" | sudo tee /etc/xdg/reflector/reflector.conf > /dev/null
 #Change location as per your need(from "India" to anywhere else)
 sudo systemctl enable --now reflector
 
-sudo pacman -Sy --needed --noconfirm pacman-contrib
-if [ "$(pactree -r yay)" ]; then
-    echo "Yay is already installed"
+sudo pacman -S --needed --noconfirm pacman-contrib
+if [ "$(pactree -r pikaur)" ]; then
+    echo "Pikaur is already installed"
 else
-    git clone https://aur.archlinux.org/yay.git
-    cd yay
-    makepkg -si
+    git clone https://aur.archlinux.org/pikaur.git
+    cd pikaur
+    makepkg -fsri
     cd ..
 fi
 
@@ -32,7 +32,8 @@ if [ -d /usr/share/icons/Fluent ]; then
     cd ..
 fi
 
-sudo pacman -Syu --needed --noconfirm - < ttpkg
+pikaur -Syu
+sudo pacman -S --needed --noconfirm - < ttpkg
 
 line="QT_QPA_PLATFORMTHEME=qt6ct"
 file="/etc/environment"
@@ -43,14 +44,14 @@ fi
 read -r -p "Do you want to install Cinnamon? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     echo "Installing Cinnamon..."
-    sudo pacman -Syu --needed --noconfirm - < cin
+    sudo pacman -S --needed --noconfirm - < cin
     gsettings set org.cinnamon.desktop.interface gtk-theme "Materia-dark-compact" && gsettings set org.cinnamon.theme name "Materia-dark-compact" && gsettings set org.cinnamon.desktop.interface icon-theme "Fluent-dark"
 fi
 
 read -r -p "Do you want to install XFCE? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     echo "Installing XFCE..."
-    sudo pacman -Syu --needed --noconfirm - < xfce
+    sudo pacman -S --needed --noconfirm - < xfce
     xfconf-query -c xsettings -p /Net/ThemeName -s "Materia-dark-compact"
     xfconf-query -c xsettings -p /Net/IconThemeName -s "Fluent-dark"
     xfconf-query -c xfwm4 -p /general/theme -s "Materia-dark-compact"
@@ -62,12 +63,8 @@ echo -e "[greeter]\ntheme-name = Materia-dark-compact\nicon-theme-name = Fluent-
 
 read -r -p "Do you want to install VS Code(from AUR)? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    yay -Syu visual-studio-code-bin
+    pikaur -S visual-studio-code-bin
 fi
-
-#sudo pacman -Syu --needed --noconfirm - < g
-#gsettings set org.gnome.desktop.interface icon-theme "Fluent-dark"
-#sudo systemctl enable gdm
 
 echo "################################################"
 echo "Done! You can manually delete this folder later!"
