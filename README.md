@@ -9,6 +9,6 @@ This script was created taking into account that the user has already installed 
 
 # Packages Installed:
    * xorg
-   * yay
-   * **Cinnamon**
-   * few more necessary tools...(Read the **tpkg** and **cinnamon** file for precise information)
+   * pikaur
+   * **Cinnamon** or/and **XFCE**
+   * few more necessary tools...(Read the **ttpkg**, **xfce** and **cinnamon** file for precise information)
