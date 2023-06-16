@@ -9,6 +9,7 @@ fuse2
 fuse3
 gnome-keyring
 gnome-online-accounts
+gnome-system-monitor
 gparted
 gpart
 gthumb
@@ -45,4 +46,5 @@ qt6ct
 telegram-desktop
 vlc
 xdg-user-dirs-gtk
+xed
 xorg
