@@ -24,7 +24,6 @@ gvfs-smb
 kvantum
 kvantum-theme-materia
 libreoffice-fresh
-libqalculate
 lightdm
 lightdm-gtk-greeter
 lightdm-gtk-greeter-settings
@@ -41,6 +40,7 @@ noto-fonts-extra
 numlockx
 python-pip
 openvpn
+qalculate-gtk
 qt5ct
 qt6ct
 telegram-desktop
