@@ -1,7 +1,6 @@
 android-tools
 bleachbit
 dosfstools
-devtools
 exfatprogs
 file-roller
 firefox
@@ -39,8 +38,6 @@ noto-fonts-cjk
 noto-fonts-emoji
 noto-fonts-extra
 numlockx
-python-defusedxml
-python-pysocks
 python-pip
 openvpn
 qalculate-gtk
