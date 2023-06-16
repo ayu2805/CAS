@@ -59,7 +59,7 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     xfconf-query -c xfwm4 -p /general/theme -s "Materia-dark-compact"
 fi
 
-sudo pacman -Rscn xdg-desktop-portal-gnome
+sudo pacman -Rscn --noconfirm xdg-desktop-portal-gnome
 
 sudo systemctl enable lightdm
 sudo sed -i 's/^#greeter-setup-script=/greeter-setup-script=\/usr\/bin\/numlockx\ on/' /etc/lightdm/lightdm.conf
