@@ -15,12 +15,13 @@ echo -e "--save /etc/pacman.d/mirrorlist\n--protocol https\n--country India\n--l
 sudo systemctl enable --now reflector
 
 sudo pacman -S --needed --noconfirm pacman-contrib
-if [ "$(pactree -r pikaur)" ]; then
-    echo "Pikaur is already installed"
+if [ "$(pactree -r yay)" ]; then
+    echo "Yay is already installed"
 else
-    git clone https://aur.archlinux.org/pikaur.git
-    cd pikaur
-    makepkg -fsri
+    pacman -S --needed git base-devel
+    git clone https://aur.archlinux.org/yay.git
+    cd yay
+    makepkg -si
     cd ..
 fi
 
