@@ -33,7 +33,6 @@ if [ -d /usr/share/icons/Fluent ]; then
     cd ..
 fi
 
-yay -Syu
 sudo pacman -S --needed --noconfirm - < ttpkg
 
 line="QT_QPA_PLATFORMTHEME=qt6ct"
@@ -63,6 +62,16 @@ fi
 sudo systemctl enable lightdm
 sudo sed -i 's/^#greeter-setup-script=/greeter-setup-script=\/usr\/bin\/numlockx\ on/' /etc/lightdm/lightdm.conf
 echo -e "[greeter]\ntheme-name = Materia-dark-compact\nicon-theme-name = Fluent-dark\nhide-user-image = true\nindicators = ~clock;~spacer;~session;~a11y;~power" | sudo tee /etc/lightdm/lightdm-gtk-greeter.conf > /dev/null
+cd ~/.config
+rm -rf Kvantum
+rm -rf qt5ct
+rm -rf qt6ct
+rm -rf vlc
+cd ~/CAS
+cp -a Kvantum ~/.config
+cp -a qt5ct ~/.config
+cp -a qt6ct ~/.config
+cp -a vlc ~/.config
 
 read -r -p "Do you want to install VS Code(from AUR)? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
