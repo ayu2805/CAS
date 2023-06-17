@@ -66,7 +66,7 @@ echo -e "[greeter]\ntheme-name = Materia-dark-compact\nicon-theme-name = Fluent-
 
 read -r -p "Do you want to install VS Code(from AUR)? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    pikaur -S visual-studio-code-bin
+    yay -S visual-studio-code-bin
 fi
 
 echo "################################################"
