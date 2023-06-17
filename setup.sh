@@ -18,7 +18,7 @@ sudo pacman -S --needed --noconfirm pacman-contrib
 if [ "$(pactree -r yay)" ]; then
     echo "Yay is already installed"
 else
-    pacman -S --needed git base-devel
+    sudo pacman -S --needed git base-devel
     git clone https://aur.archlinux.org/yay.git
     cd yay
     makepkg -si
