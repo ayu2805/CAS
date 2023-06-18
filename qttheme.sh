@@ -8,3 +8,4 @@ cp -a Kvantum ~/.config
 cp -a qt5ct ~/.config
 cp -a qt6ct ~/.config
 cp -a vlc ~/.config
+echo "QT application in themed"
