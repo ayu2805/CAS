@@ -28,6 +28,7 @@ lightdm
 lightdm-gtk-greeter
 lightdm-gtk-greeter-settings
 materia-gtk-theme
+mpv
 mtools
 nano
 neofetch
@@ -44,7 +45,6 @@ qalculate-gtk
 qt5ct
 qt6ct
 telegram-desktop
-vlc
 xdg-user-dirs-gtk
 xdg-desktop-portal-gtk
 xed
