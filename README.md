@@ -3,7 +3,7 @@ Customised Arch Setup
 
 
 This is basic DE and Tools installation script. Necessary packages will be installed.
-This script was created taking into account that the user has already installed almost pure Arch.
+This script was created taking into account that the user has already installed almost pure Arch with graphics drivers.
 
 **git** is mandatory
 
