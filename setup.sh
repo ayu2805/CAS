@@ -26,7 +26,8 @@ else
 fi
 
 if [ -d /usr/share/icons/Fluent ]; then
-    echo "Fluent Icon Theme is already installed."; else
+    echo "Fluent Icon Theme is already installed."
+else
     git clone https://github.com/vinceliuice/Fluent-icon-theme.git
     cd Fluent-icon-theme
     sudo ./install.sh -r
