@@ -25,15 +25,6 @@ else
     cd ..
 fi
 
-if [ -d /usr/share/icons/Fluent ]; then
-    echo "Fluent Icon Theme is already installed."
-else
-    git clone https://github.com/vinceliuice/Fluent-icon-theme.git
-    cd Fluent-icon-theme
-    sudo ./install.sh -r
-    cd ..
-fi
-
 sudo pacman -S --needed --noconfirm - < ttpkg
 
 line="QT_QPA_PLATFORMTHEME=qt6ct"
@@ -48,7 +39,7 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     sudo pacman -S --needed --noconfirm - < cin
     gsettings set org.cinnamon.desktop.interface gtk-theme "Materia-dark-compact"
     gsettings set org.cinnamon.theme name "Materia-dark-compact"
-    gsettings set org.cinnamon.desktop.interface icon-theme "Fluent-dark"
+    gsettings set org.cinnamon.desktop.interface icon-theme "Papirus-Dark"
 fi
 
 read -r -p "Do you want to install XFCE? [y/N] " response
@@ -56,7 +47,7 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     echo "Installing XFCE..."
     sudo pacman -S --needed --noconfirm - < xfce
     xfconf-query -c xsettings -p /Net/ThemeName -s "Materia-dark-compact"
-    xfconf-query -c xsettings -p /Net/IconThemeName -s "Fluent-dark"
+    xfconf-query -c xsettings -p /Net/IconThemeName -s "Papirus-Dark"
     xfconf-query -c xfwm4 -p /general/theme -s "Materia-dark-compact"
 fi
 
@@ -68,7 +59,7 @@ fi
 
 sudo systemctl enable lightdm
 sudo sed -i 's/^#greeter-setup-script=/greeter-setup-script=\/usr\/bin\/numlockx\ on/' /etc/lightdm/lightdm.conf
-echo -e "[greeter]\ntheme-name = Materia-dark-compact\nicon-theme-name = Fluent-dark\nhide-user-image = true\nindicators = ~clock;~spacer;~session;~a11y;~power" | sudo tee /etc/lightdm/lightdm-gtk-greeter.conf > /dev/null
+echo -e "[greeter]\ntheme-name = Materia-dark-compact\nicon-theme-name = Papirus-Dark\nhide-user-image = true\nindicators = ~clock;~spacer;~session;~a11y;~power" | sudo tee /etc/lightdm/lightdm-gtk-greeter.conf > /dev/null
 
 read -r -p "Do you want to install VS Code(from AUR)? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
