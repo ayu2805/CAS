@@ -26,6 +26,7 @@ else
 fi
 
 sudo pacman -S --needed --noconfirm - < ttpkg
+sudo systemctl enable cups
 
 line="QT_QPA_PLATFORMTHEME=qt6ct"
 file="/etc/environment"
